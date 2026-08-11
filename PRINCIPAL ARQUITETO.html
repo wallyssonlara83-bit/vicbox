@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESTRUTURA° — Vidros, Divisórias e Forros Técnicos para Obras Assinadas</title>
+<meta name="description" content="Instalação especializada de vidros temperados/laminados, guarda-corpos, pele de vidro, divisórias modulares e forros de PVC técnico. Orçamento analítico sob projeto para escritórios de arquitetura e engenharia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint-900:#0b1f33;
+    --blueprint-800:#0e2740;
+    --blueprint-700:#12385a;
+    --blueprint-line:rgba(143,214,232,0.16);
+    --trace-cyan:#8fd6e8;
+    --trace-cyan-dim:#5b96a8;
+    --paper:#eef0ea;
+    --paper-panel:#ffffff;
+    --graphite:#1b2430;
+    --graphite-soft:#4c5764;
+    --signal-amber:#e8942f;
+    --signal-amber-dark:#c67518;
+    --line-hair: rgba(27,36,48,0.14);
+    --radius-sm:3px;
+    --radius-md:6px;
+    --maxw:1200px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--graphite);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:currentColor;
+    display:inline-block;
+  }
+  .eyebrow--dark{color:var(--trace-cyan);}
+  .eyebrow--light{color:var(--signal-amber-dark);}
+
+  /* ============ FOCUS ============ */
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--signal-amber);
+    outline-offset:3px;
+  }
+
+  /* ============ TOPO / TITLE BLOCK ============ */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11, 31, 51, 0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--blueprint-line);
+  }
+  .topbar__inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--maxw); margin:0 auto;
+    gap:16px;
+  }
+  .brand{display:flex; align-items:baseline; gap:10px; color:#fff; text-decoration:none;}
+  .brand__mark{
+    font-family:var(--font-display); font-weight:700; font-size:1.2rem; letter-spacing:0.01em;
+  }
+  .brand__mark span{color:var(--trace-cyan);}
+  .brand__tag{
+    font-family:var(--font-mono); font-size:0.66rem; color:var(--trace-cyan-dim);
+    letter-spacing:0.06em; display:none;
+  }
+  @media(min-width:760px){ .brand__tag{display:inline;} }
+
+  .topnav{display:none; gap:28px; font-size:0.86rem; color:#cfe4ec;}
+  .topnav a{text-decoration:none; opacity:0.85; transition:opacity .2s, color .2s;}
+  .topnav a:hover{opacity:1; color:var(--trace-cyan);}
+  @media(min-width:900px){ .topnav{display:flex;} }
+
+  .topbar__cta{
+    font-family:var(--font-mono);
+    font-size:0.74rem;
+    letter-spacing:0.04em;
+    color:var(--blueprint-900);
+    background:var(--trace-cyan);
+    padding:9px 18px;
+    border-radius:var(--radius-sm);
+    text-decoration:none;
+    white-space:nowrap;
+    border:1px solid var(--trace-cyan);
+    font-weight:600;
+    transition:background .2s, color .2s, transform .2s;
+  }
+  .topbar__cta:hover{ background:transparent; color:var(--trace-cyan); transform:translateY(-1px); }
+
+  /* ============ BLUEPRINT SECTION BASE ============ */
+  .plate{
+    position:relative;
+    padding:96px 0;
+  }
+  .plate--dark{
+    background:
+      linear-gradient(var(--blueprint-line) 1px, transparent 1px) 0 0/44px 44px,
+      linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px) 0 0/44px 44px,
+      var(--blueprint-900);
+    color:#dce9ee;
+  }
+  .plate--paper{ background:var(--paper); color:var(--graphite); }
+
+  .plate__corner{
+    position:absolute; width:14px; height:14px;
+    border-color:var(--trace-cyan-dim);
+    opacity:0.7;
+  }
+  .plate--dark .plate__corner{ border-color:var(--trace-cyan-dim); }
+  .plate__corner--tl{ top:22px; left:22px; border-top:1px solid; border-left:1px solid; }
+  .plate__corner--br{ bottom:22px; right:22px; border-bottom:1px solid; border-right:1px solid; }
+  @media(max-width:640px){ .plate__corner{display:none;} }
+
+  /* ============ HERO ============ */
+  .hero{ padding:88px 0 96px; }
+  .hero__grid{
+    display:grid; gap:52px;
+    grid-template-columns:1fr;
+    align-items:center;
+  }
+  @media(min-width:960px){
+    .hero__grid{ grid-template-columns:1.05fr 0.95fr; }
+  }
+
+  .hero h1{
+    font-size:clamp(2.2rem, 4.4vw, 3.5rem);
+    font-weight:700;
+    color:#fff;
+    line-height:1.08;
+    max-width:15ch;
+  }
+  .hero__sub{
+    margin-top:22px;
+    font-size:1.02rem;
+    color:#b9cdd6;
+    max-width:52ch;
+    line-height:1.7;
+  }
+  .hero__actions{
+    margin-top:34px;
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    padding:14px 22px;
+    border-radius:var(--radius-sm);
+    text-decoration:none;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .btn:active{ transform:translateY(1px); }
+  .btn--primary{
+    background:var(--signal-amber);
+    color:#241300;
+    border-color:var(--signal-amber);
+    font-weight:600;
+  }
+  .btn--primary:hover{ background:var(--signal-amber-dark); border-color:var(--signal-amber-dark); color:#fff; box-shadow:0 4px 16px rgba(232,148,47,0.25); }
+  .btn--ghost-dark{
+    background:transparent;
+    color:var(--trace-cyan);
+    border-color:var(--trace-cyan-dim);
+  }
+  .btn--ghost-dark:hover{ background:rgba(143,214,232,0.08); border-color:var(--trace-cyan); }
+
+  .hero__trust{
+    margin-top:30px;
+    font-size:0.8rem;
+    color:var(--trace-cyan-dim);
+    max-width:48ch;
+    border-left:2px solid var(--trace-cyan-dim);
+    padding-left:14px;
+  }
+
+  /* --- hero technical drawing --- */
+  .hero__figure{
+    border:1px solid var(--blueprint-line);
+    background:rgba(255,255,255,0.02);
+    border-radius:var(--radius-md);
+    padding:20px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+  }
+  .hero__figure svg{ width:100%; height:auto; display:block; }
+  .hero__figure figcaption{
+    margin-top:14px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-family:var(--font-mono);
+    font-size:0.66rem;
+    color:var(--trace-cyan-dim);
+    letter-spacing:0.05em;
+  }
+
+  /* ============ HEADER GENÉRICO DE SEÇÃO ============ */
+  .section-head{
+    max-width:58ch;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:700;
+    line-height:1.18;
+  }
+  .plate--dark .section-head h2{ color:#fff; }
+  .plate--paper .section-head h2{ color:var(--graphite); }
+  .section-head p{
+    margin-top:16px;
+    font-size:0.98rem;
+    color:var(--graphite-soft);
+  }
+  .plate--dark .section-head p{ color:#a9bfc8; }
+
+  /* ============ DORES: COMPARATIVO ============ */
+  .compare{
+    background:var(--paper-panel);
+    border:1px solid var(--line-hair);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+  }
+  .compare__row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .compare__row + .compare__row{ border-top:1px solid var(--line-hair); }
+  .compare__row.compare__row--head{ background:var(--graphite); color:#fff; }
+  .compare__cell{
+    padding:20px 22px;
+    font-size:0.92rem;
+  }
+  .compare__row--head .compare__cell{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:14px 22px;
+  }
+  .compare__cell--spec{ border-right:1px solid var(--line-hair); color:var(--graphite); }
+  .compare__row--head .compare__cell--spec{ border-right-color:rgba(255,255,255,0.15); color:#cfe4ec; }
+  .compare__cell--risk{ color:#8a2f1f; }
+  .compare__row--head .compare__cell--risk{ color:var(--signal-amber); }
+
+  .dores__note{
+    margin-top:28px;
+    max-width:62ch;
+    font-size:0.94rem;
+    color:var(--graphite-soft);
+    border-left:2px solid var(--signal-amber-dark);
+    padding-left:16px;
+  }
+
+  /* ============ DIFERENCIAIS ============ */
+  .detail-grid{
+    display:grid;
+    gap:20px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:640px){ .detail-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:1024px){ .detail-grid{ grid-template-columns:repeat(3, 1fr); } }
+
+  .detail-card{
+    border:1px solid var(--blueprint-line);
+    border-radius:var(--radius-md);
+    padding:28px 24px;
+    background:rgba(255,255,255,0.02);
+    display:flex; flex-direction:column; gap:14px;
+    transition:border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .detail-card:hover{ border-color:var(--trace-cyan-dim); background:rgba(255,255,255,0.05); transform:translateY(-2px); }
+  .detail-card__mark{
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid var(--trace-cyan-dim);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:0.85rem; color:var(--trace-cyan);
+    flex-shrink:0; background:rgba(143,214,232,0.05);
+  }
+  .detail-card h3{
+    font-size:1.05rem; font-weight:600; color:#fff;
+  }
+  .detail-card p{
+    margin:0; font-size:0.88rem; color:#a9bfc8; line-height:1.6;
+  }
+
+  /* ============ PROVA SOCIAL ============ */
+  .case-grid{
+    display:grid; gap:20px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:760px){ .case-grid{ grid-template-columns:repeat(3, 1fr); } }
+
+  .case-card{
+    background:var(--paper-panel);
+    border:1px solid var(--line-hair);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .case-card:hover{ transform:translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,0.06); }
+  .case-card__img{
+    aspect-ratio:4/3;
+    background:
+      linear-gradient(135deg, rgba(11,31,51,0.05) 0%, rgba(11,31,51,0.12) 100%),
+      repeating-linear-gradient(135deg, #dfe4dd 0 2px, #eceee8 2px 14px);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--graphite-soft);
+    font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.05em;
+    text-align:center; padding:12px; font-weight:500;
+  }
+  .case-card__body{ padding:20px 22px 24px; }
+  .case-card__tag{
+    font-family:var(--font-mono); font-size:0.66rem; color:var(--signal-amber-dark);
+    letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px; display:block; font-weight:600;
+  }
+  .case-card__body h3{ font-size:1rem; font-weight:600; }
+  .case-card__body p{ margin:8px 0 0; font-size:0.85rem; color:var(--graphite-soft); }
+
+  .testimonial{
+    margin-top:52px;
+    border-top:1px solid var(--line-hair);
+    padding-top:44px;
+    display:grid; gap:28px;
+  }
+  @media(min-width:820px){ .testimonial{ grid-template-columns:2fr 1fr; align-items:start; } }
+  .testimonial blockquote{
+    margin:0; font-family:var(--font-display); font-weight:500;
+    font-size:clamp(1.1rem, 2vw, 1.35rem); line-height:1.5; color:var(--graphite);
+  }
+  .testimonial cite{
+    display:block; margin-top:18px; font-style:normal;
+    font-family:var(--font-mono); font-size:0.76rem; color:var(--graphite-soft);
+  }
+  .norms{
+    font-family:var(--font-mono); font-size:0.72rem; color:var(--graphite-soft);
+    display:flex; flex-direction:column; gap:8px;
+    background:#e5e8e1; padding:18px; border-radius:var(--radius-sm);
+  }
+  .norms strong{ color:var(--graphite); font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .norms span{ padding-left:16px; position:relative; }
+  .norms span::before{ content:"—"; position:absolute; left:0; color:var(--signal-amber-dark); }
+
+  /* ============ OFERTA / CONTATO E LOCALIZAÇÃO ============ */
+  .offer{
+    display:grid; gap:44px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:960px){ .offer{ grid-template-columns:1fr 1fr; align-items:start; } }
+
+  .offer__text h2{ color:#fff; font-size:clamp(1.6rem,3vw,2.2rem); line-height:1.2; }
+  .offer__text p{ margin-top:18px; color:#a9bfc8; font-size:0.98rem; max-width:48ch; }
+  .offer__list{
+    list-style:none; margin:24px 0 0; padding:0;
+    font-family:var(--font-mono); font-size:0.8rem; color:#cfe4ec;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .offer__list li{ padding-left:20px; position:relative; }
+  .offer__list li::before{ content:"›"; position:absolute; left:0; color:var(--trace-cyan); font-weight:bold; }
+
+  /* CARD DE INFORMAÇÕES DE CONTATO E LOCALIZAÇÃO */
+  .contact-info-card{
+    margin-top:32px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--blueprint-line);
+    border-radius:var(--radius-md);
+    padding:24px;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .contact-info-card__title{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    color:var(--trace-cyan);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--blueprint-line);
+    padding-bottom:10px;
+    margin:0;
+  }
+  .contact-info-list{
+    display:flex; flex-direction:column; gap:14px; margin:0; padding:0; list-style:none;
+  }
+  .contact-info-item{
+    display:flex; gap:12px; align-items:flex-start; font-size:0.88rem; color:#dce9ee;
+  }
+  .contact-info-item svg{
+    width:18px; height:18px; fill:var(--trace-cyan); flex-shrink:0; margin-top:2px;
+  }
+  .contact-info-item a{
+    color:#fff; text-decoration:none; transition:color .2s;
+  }
+  .contact-info-item a:hover{ color:var(--trace-cyan); text-decoration:underline; }
+  .contact-info-item span.label{
+    display:block; font-family:var(--font-mono); font-size:0.68rem; color:var(--trace-cyan-dim); text-transform:uppercase;
+  }
+
+  /* FORMULÁRIO DE ENVIO */
+  .upload-panel{
+    background:var(--blueprint-800);
+    border:1px solid var(--blueprint-line);
+    border-radius:var(--radius-md);
+    padding:32px;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.25);
+  }
+  .upload-panel__head{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em;
+    color:var(--trace-cyan); text-transform:uppercase; margin-bottom:22px;
+    display:flex; justify-content:space-between; border-bottom:1px solid var(--blueprint-line);
+    padding-bottom:12px;
+  }
+  .field{ margin-bottom:16px; }
+  .field label{
+    display:block; font-family:var(--font-mono); font-size:0.7rem;
+    color:#a9bfc8; margin-bottom:6px; letter-spacing:0.03em;
+  }
+  .field input, .field textarea, .field select{
+    width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--blueprint-line);
+    border-radius:var(--radius-sm); color:#fff; padding:12px 14px; font-family:var(--font-body);
+    font-size:0.9rem; transition:border-color .2s, background .2s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{
+    border-color:var(--trace-cyan); background:rgba(255,255,255,0.08);
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:#5c7480; }
+  .field textarea{ resize:vertical; min-height:84px; }
+  .field--file{
+    border:1px dashed var(--trace-cyan-dim); border-radius:var(--radius-sm);
+    padding:16px; display:flex; flex-direction:column; gap:8px;
+    font-size:0.8rem; color:#a9bfc8; background:rgba(255,255,255,0.02);
+    transition:background .2s, border-color .2s;
+  }
+  .field--file:hover{ background:rgba(255,255,255,0.04); border-color:var(--trace-cyan); }
+  .field--file input[type="file"]{ font-family:var(--font-body); font-size:0.78rem; color:#a9bfc8; border:none; background:none; padding:0; width:100%; cursor:pointer; }
+  .upload-panel .btn{ width:100%; justify-content:center; margin-top:8px; padding:16px; }
+  .upload-panel__note{
+    margin-top:14px; font-size:0.72rem; color:var(--trace-cyan-dim); font-family:var(--font-mono); text-align:center;
+  }
+
+  /* ============ FAQ ============ */
+  .faq{ max-width:840px; }
+  .faq details{
+    border-bottom:1px solid var(--line-hair);
+    padding:20px 0;
+  }
+  .faq summary{
+    cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; font-weight:600; font-size:1rem; color:var(--graphite);
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{
+    content:"+"; font-family:var(--font-mono); font-size:1.2rem; color:var(--signal-amber-dark);
+    flex-shrink:0; transition:transform .2s ease;
+  }
+  .faq details[open] summary::after{ content:"–"; }
+  .faq p{ margin:14px 0 0; font-size:0.92rem; color:var(--graphite-soft); max-width:64ch; line-height:1.6; }
+
+  /* ============ FOOTER ============ */
+  .footer{
+    background:var(--blueprint-900); color:#89a3ac;
+    padding:52px 0 30px;
+    border-top:1px solid var(--blueprint-line);
+  }
+  .footer__inner{
+    display:grid; grid-template-columns:1fr; gap:36px;
+    font-family:var(--font-mono); font-size:0.74rem; letter-spacing:0.03em;
+  }
+  @media(min-width:760px){
+    .footer__inner{ grid-template-columns:1.2fr 2fr; }
+  }
+  .footer__brand{ color:#fff; font-family:var(--font-display); font-size:1.1rem; font-weight:700; }
+  .footer__cols{ display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:28px; }
+  .footer__col h4{ color:#cfe4ec; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin:0 0 14px; border-bottom:1px solid rgba(143,214,232,0.1); padding-bottom:6px; }
+  .footer__col a, .footer__col p{ display:block; text-decoration:none; color:#89a3ac; margin-bottom:8px; line-height:1.5; }
+  .footer__col a:hover{ color:var(--trace-cyan); }
+  .footer__bottom{
+    margin-top:44px; padding-top:24px; border-top:1px solid var(--blueprint-line);
+    font-family:var(--font-mono); font-size:0.68rem; color:#5c7480;
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
+  }
+
+  /* ============ WHATSAPP FLUTUANTE ============ */
+  .wa-float{
+    position:fixed; right:20px; bottom:20px; z-index:60;
+    display:inline-flex; align-items:center; gap:10px;
+    background:#1f8a4c; color:#fff; text-decoration:none;
+    padding:13px 20px 13px 16px; border-radius:999px;
+    font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.02em; font-weight:600;
+    box-shadow:0 10px 24px rgba(0,0,0,0.3);
+    transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  }
+  .wa-float:hover{ transform:translateY(-2px); background:#25a059; box-shadow:0 14px 30px rgba(0,0,0,0.4); }
+  .wa-float__icon{
+    width:22px; height:22px; flex-shrink:0;
+  }
+  .wa-float__label{ display:none; }
+  @media(min-width:560px){ .wa-float__label{ display:inline; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="#topo" class="brand">
+      <span class="brand__mark">ESTRUTURA<span>°</span></span>
+      <span class="brand__tag">VIDROS · DIVISÓRIAS · FORROS TÉCNICOS</span>
+    </a>
+    <nav class="topnav" aria-label="Navegação principal">
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato &amp; Projetos</a>
+    </nav>
+    <a href="#contato" class="topbar__cta">Enviar Projeto</a>
+  </div>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="plate plate--dark hero">
+    <div class="plate__corner plate__corner--tl" aria-hidden="true"></div>
+    <div class="plate__corner plate__corner--br" aria-hidden="true"></div>
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow eyebrow--dark">ESC 1:50 · FL 01/06 · REV A</p>
+        <h1>Sua Especificação Sem Concessões no Canteiro de Obras.</h1>
+        <p class="hero__sub">Vidros temperados e laminados, guarda-corpos, pele de vidro, divisórias modulares e forros de PVC técnico — executados com a mesma precisão do projeto que você assinou. Sem improviso de mão de obra entre a prancha e a obra entregue.</p>
+        <div class="hero__actions">
+          <a href="#contato" class="btn btn--primary">Enviar Projeto e Receber Orçamento Analítico</a>
+          <a href="https://wa.me/5531999999999?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20engenharia%20sobre%20um%20projeto." class="btn btn--ghost-dark" target="_blank" rel="noopener">Falar com Engenharia via WhatsApp</a>
+        </div>
+        <p class="hero__trust">Atendimento técnico a escritórios de arquitetura e engenharia em obras corporativas e residenciais de alto padrão em Minas Gerais e Região.</p>
+      </div>
+
+      <figure class="hero__figure">
+        <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroSvgTitle">
+          <title id="heroSvgTitle">Corte técnico ilustrativo de fachada com pele de vidro, guarda-corpo e forro de PVC</title>
+
+          <!-- laje inferior -->
+          <line x1="20" y1="330" x2="500" y2="330" stroke="#8fd6e8" stroke-width="1" opacity="0.55"/>
+          <line x1="20" y1="338" x2="500" y2="338" stroke="#8fd6e8" stroke-width="1" opacity="0.25"/>
+
+          <!-- laje superior -->
+          <line x1="20" y1="70" x2="500" y2="70" stroke="#8fd6e8" stroke-width="1" opacity="0.55"/>
+          <line x1="20" y1="62" x2="500" y2="62" stroke="#8fd6e8" stroke-width="1" opacity="0.25"/>
+
+          <!-- pele de vidro -->
+          <rect x="60" y="72" width="150" height="256" fill="none" stroke="#8fd6e8" stroke-width="1.2"/>
+          <line x1="60" y1="115" x2="210" y2="115" stroke="#8fd6e8" stroke-width="0.6" opacity="0.5"/>
+          <line x1="60" y1="158" x2="210" y2="158" stroke="#8fd6e8" stroke-width="0.6" opacity="0.5"/>
+          <line x1="60" y1="201" x2="210" y2="201" stroke="#8fd6e8" stroke-width="0.6" opacity="0.5"/>
+          <line x1="60" y1="244" x2="210" y2="244" stroke="#8fd6e8" stroke-width="0.6" opacity="0.5"/>
+          <line x1="60" y1="287" x2="210" y2="287" stroke="#8fd6e8" stroke-width="0.6" opacity="0.5"/>
+
+          <!-- guarda-corpo -->
+          <line x1="230" y1="328" x2="230" y2="250" stroke="#8fd6e8" stroke-width="1.2"/>
+          <line x1="250" y1="328" x2="250" y2="250" stroke="#8fd6e8" stroke-width="1.2"/>
+          <line x1="270" y1="328" x2="270" y2="250" stroke="#8fd6e8" stroke-width="1.2"/>
+          <line x1="290" y1="328" x2="290" y2="250" stroke="#8fd6e8" stroke-width="1.2"/>
+          <rect x="222" y="245" width="76" height="8" fill="none" stroke="#8fd6e8" stroke-width="1"/>
+
+          <!-- forro pvc -->
+          <g opacity="0.9">
+            <line x1="330" y1="80" x2="480" y2="80" stroke="#8fd6e8" stroke-width="1"/>
+            <line x1="330" y1="92" x2="480" y2="92" stroke="#8fd6e8" stroke-width="1"/>
+            <line x1="330" y1="104" x2="480" y2="104" stroke="#8fd6e8" stroke-width="1"/>
+            <line x1="330" y1="116" x2="480" y2="116" stroke="#8fd6e8" stroke-width="1"/>
+          </g>
+
+          <!-- marcadores de detalhe -->
+          <circle cx="135" cy="200" r="11" fill="#0b1f33" stroke="#e8942f" stroke-width="1.2"/>
+          <text x="135" y="204" font-family="IBM Plex Mono, monospace" font-size="10" fill="#e8942f" text-anchor="middle">01</text>
+
+          <circle cx="258" cy="270" r="11" fill="#0b1f33" stroke="#e8942f" stroke-width="1.2"/>
+          <text x="258" y="274" font-family="IBM Plex Mono, monospace" font-size="10" fill="#e8942f" text-anchor="middle">02</text>
+
+          <circle cx="405" cy="98" r="11" fill="#0b1f33" stroke="#e8942f" stroke-width="1.2"/>
+          <text x="405" y="102" font-family="IBM Plex Mono, monospace" font-size="10" fill="#e8942f" text-anchor="middle">03</text>
+
+          <!-- linhas de chamada -->
+          <line x1="146" y1="200" x2="180" y2="175" stroke="#e8942f" stroke-width="0.8"/>
+          <text x="184" y="178" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c9d9de">Pele de vidro laminado 10mm</text>
+
+          <line x1="269" y1="264" x2="300" y2="230" stroke="#e8942f" stroke-width="0.8"/>
+          <text x="304" y="233" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c9d9de">Guarda-corpo · fixação pontual</text>
+
+          <line x1="416" y1="104" x2="440" y2="140" stroke="#e8942f" stroke-width="0.8"/>
+          <text x="352" y="155" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c9d9de">Forro PVC técnico modulado</text>
+
+          <!-- cota -->
+          <line x1="20" y1="345" x2="20" y2="352" stroke="#5b96a8" stroke-width="0.8"/>
+          <line x1="500" y1="345" x2="500" y2="352" stroke="#5b96a8" stroke-width="0.8"/>
+          <line x1="20" y1="349" x2="500" y2="349" stroke="#5b96a8" stroke-width="0.8"/>
+          <text x="260" y="365" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5b96a8" text-anchor="middle">VÃO TÍPICO — CONFORME PROJETO EXECUTIVO</text>
+        </svg>
+        <figcaption>
+          <span>DET. FACHADA — CORTE AB</span>
+          <span>UN: MM</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- DORES -->
+  <section class="plate plate--paper">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--light">O RISCO ENTRE A PRANCHA E A OBRA</p>
+        <h2>Projeto Bem Especificado. Execução Sem Rigor Técnico.</h2>
+        <p>Toda incompatibilidade entre o memorial e o que sobe na obra vira um problema com nome — e o nome, primeiro, é o do escritório responsável técnico.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare__row compare__row--head">
+          <div class="compare__cell compare__cell--spec">No Projeto Assinado</div>
+          <div class="compare__cell compare__cell--risk">Na Obra, Sem Controle Técnico</div>
+        </div>
+        <div class="compare__row">
+          <div class="compare__cell compare__cell--spec">Vidro laminado especificado em 10mm para o painel de fachada</div>
+          <div class="compare__cell compare__cell--risk">Instalação com espessura ou têmpera fora do memorial descritivo</div>
+        </div>
+        <div class="compare__row">
+          <div class="compare__cell compare__cell--spec">Guarda-corpo dimensionado para carga horizontal conforme NBR 14718</div>
+          <div class="compare__cell compare__cell--risk">Fixação improvisada, sem ensaio nem laudo de resistência</div>
+        </div>
+        <div class="compare__row">
+          <div class="compare__cell compare__cell--spec">Modulação do forro PVC alinhada ao projeto luminotécnico</div>
+          <div class="compare__cell compare__cell--risk">Recortes e emendas fora de esquadro, visíveis na entrega final</div>
+        </div>
+      </div>
+
+      <p class="dores__note">O desgaste com o cliente final e o retrabalho de obra raramente aparecem na planilha de custo — mas comprometem o conceito arquitetônico e a relação de confiança que sustenta o próximo projeto.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="plate plate--dark" id="diferenciais">
+    <div class="plate__corner plate__corner--tl" aria-hidden="true"></div>
+    <div class="plate__corner plate__corner--br" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--dark">DETALHE TÉCNICO — LEGENDA A–F</p>
+        <h2>Extensão Técnica do Seu Escritório. Não Mão de Obra Terceirizada.</h2>
+        <p>Cada frente de trabalho é tratada como um detalhe construtivo — lido, compatibilizado e executado com rastreabilidade, do projeto à entrega.</p>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <span class="detail-card__mark">A</span>
+          <h3>Compatibilização Arquitetônica</h3>
+          <p>Leitura técnica de pranchas, cortes e elevações antes da produção, com apontamento formal de interferências ao escritório responsável.</p>
+        </article>
+        <article class="detail-card">
+          <span class="detail-card__mark">B</span>
+          <h3>Conformidade Normativa</h3>
+          <p>Execução alinhada às NBRs vigentes para vidros de segurança, guarda-corpos e sistemas de fixação estrutural.</p>
+        </article>
+        <article class="detail-card">
+          <span class="detail-card__mark">C</span>
+          <h3>Produtos Homologados</h3>
+          <p>Vidro temperado e laminado de procedência certificada, com laudo técnico disponível para o memorial da obra.</p>
+        </article>
+        <article class="detail-card">
+          <span class="detail-card__mark">D</span>
+          <h3>Corpo Técnico Graduado</h3>
+          <p>Engenheiros e projetistas acompanhando a execução em campo — não apenas uma equipe de instalação.</p>
+        </article>
+        <article class="detail-card">
+          <span class="detail-card__mark">E</span>
+          <h3>Logística de Risco Controlado</h3>
+          <p>Transporte e içamento de grandes vãos com plano formal de mitigação de sinistro em canteiro.</p>
+        </article>
+        <article class="detail-card">
+          <span class="detail-card__mark">F</span>
+          <h3>Cronograma Rígido de Obra</h3>
+          <p>Etapas de fornecimento e instalação sincronizadas com o cronograma físico da obra, sem gargalos de última hora.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="plate plate--paper" id="portfolio">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--light">OBRAS ENTREGUES</p>
+        <h2>Portfólio Técnico em Obras Corporativas e Residenciais de Alto Padrão.</h2>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-card__img">FACHADA E PELE DE VIDRO</div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Pele de Vidro Estrutural</span>
+            <h3>Edifício Corporativo — 1.200 m² de fachada</h3>
+            <p>Fixação pontual, compatibilizada com projeto estrutural e luminotécnico do escritório responsável.</p>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-card__img">GUARDA-CORPO DE SACADA</div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Guarda-Corpos</span>
+            <h3>Residencial Multifamiliar — sacadas panorâmicas</h3>
+            <p>Guarda-corpos estruturais em vidro laminado, dimensionados conforme NBR 14718.</p>
+          </div>
+        </article>
+        <article class="case-card">
+          <div class="case-card__img">DIVISÓRIAS E FORROS</div>
+          <div class="case-card__body">
+            <span class="case-card__tag">Divisórias &amp; Forro PVC</span>
+            <h3>Escritório Corporativo — retrofit de dois pavimentos</h3>
+            <p>Divisórias modulares e forro técnico entregues dentro do cronograma físico da obra.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="testimonial">
+        <div>
+          <blockquote>“Entregaram exatamente o que estava no memorial — sem ajustes de última hora e sem eu precisar estar todos os dias na obra para garantir isso.”</blockquote>
+          <cite>Arquiteto Responsável Técnico — Escritório parceiro em obra corporativa</cite>
+        </div>
+        <div class="norms">
+          <strong>Normas de Referência</strong>
+          <span>NBR 7199 — Vidros na construção civil</span>
+          <span>NBR 14718 — Guarda-corpos para edificações</span>
+          <span>NBR 6123 — Forças devidas ao vento em edificações</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA / CONTATO -->
+  <section class="plate plate--dark" id="contato">
+    <div class="plate__corner plate__corner--tl" aria-hidden="true"></div>
+    <div class="plate__corner plate__corner--br" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="offer">
+        <div class="offer__text">
+          <p class="eyebrow eyebrow--dark">FORNECEDOR ÚNICO &amp; CONTATO</p>
+          <h2>Do Envidraçamento ao Forro Técnico — Contato Direto com a Engenharia.</h2>
+          <p>Envie as pranchas ou o memorial descritivo e receba um orçamento analítico, item a item, alinhado ao que foi especificado — sem margem para interpretação em campo.</p>
+          
+          <ul class="offer__list">
+            <li>Retorno técnico após análise do arquivo enviado</li>
+            <li>Cronograma de fornecimento compatível com o da obra</li>
+            <li>Um só ponto de contato para vidros, divisórias e forros</li>
+          </ul>
+
+          <!-- BLOCO DE INFORMAÇÕES DE CONTATO DO CLIENTE -->
+          <div class="contact-info-card">
+            <h3 class="contact-info-card__title">Canais de Atendimento Técnico</h3>
+            <ul class="contact-info-list">
+              <li class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <div>
+                  <span class="label">Telefone Comercial</span>
+                  <a href="tel:+553133330000">(31) 3333-0000</a>
+                </div>
+              </li>
+              <li class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.11.1-1.79-.11-.41-.13-.94-.3-1.62-.6-2.86-1.24-4.73-4.12-4.87-4.31-.14-.19-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.28.71 1.17 1.53 1.89 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.45.2.51.32.07.12.07.68-.17 1.36Z"/></svg>
+                <div>
+                  <span class="label">WhatsApp Directo / Projetos</span>
+                  <a href="https://wa.me/5531999999999" target="_blank" rel="noopener">(31) 99999-9999</a>
+                </div>
+              </li>
+              <li class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <div>
+                  <span class="label">E-mail para Projetos &amp; Memorial</span>
+                  <a href="mailto:projetos@estrutura.com.br">projetos@estrutura.com.br</a>
+                </div>
+              </li>
+              <li class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div>
+                  <span class="label">Sede e Central de Operações</span>
+                  <span>Av. Raja Gabáglia, 2000 — Estoril, Belo Horizonte - MG</span>
+                </div>
+              </li>
+              <li class="contact-info-item">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div>
+                  <span class="label">Horário de Atendimento Técnico</span>
+                  <span>Segunda a Sexta — 08:00 às 18:00</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="upload-panel" id="contato-form">
+          <div class="upload-panel__head">
+            <span>Envio de Projeto</span>
+            <span>DWG / PDF / BIM</span>
+          </div>
+          <div class="field">
+            <label for="nome">Nome do Responsável / Escritório</label>
+            <input id="nome" name="nome" type="text" placeholder="Ex.: Arquitetura &amp; Associados" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(31) 99999-9999" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail corporativo</label>
+            <input id="email" name="email" type="email" placeholder="projetos@escritorio.com.br" required>
+          </div>
+          <div class="field">
+            <label for="mensagem">Escopo resumido ou detalhes da obra</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Ex.: Pele de vidro estrutural (~800m²) e forro PVC técnico em prédio comercial. Início previsto para 60 dias."></textarea>
+          </div>
+          <div class="field field--file">
+            <label for="arquivo">Anexar Prancha / Memorial (DWG, PDF ou ZIP até 50MB)</label>
+            <input type="file" id="arquivo" name="arquivo" accept=".dwg,.pdf,.zip,.rar">
+          </div>
+          <button type="submit" class="btn btn--primary">Enviar Projeto e Receber Orçamento Analítico</button>
+          <p class="upload-panel__note">Garantia de confidencialidade dos arquivos. Análise técnica preliminar em até 48h.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="plate plate--paper" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--light">DÚVIDAS TÉCNICAS E COMERCIAIS</p>
+        <h2>Perguntas Frequentes</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Qual o prazo para receber o orçamento analítico?</summary>
+          <p>O retorno técnico costuma ocorrer em até 2 dias úteis após o recebimento das pranchas ou do memorial descritivo, com abertura item a item conforme o escopo enviado.</p>
+        </details>
+        <details>
+          <summary>Quais formatos de arquivo vocês aceitam?</summary>
+          <p>Trabalhamos com arquivos em DWG, PDF, IFC/BIM e arquivos compactados. Quando disponível, o memorial descritivo em conjunto com as pranchas acelera a análise de compatibilização.</p>
+        </details>
+        <details>
+          <summary>Vocês atendem reformas ou apenas grandes edificações?</summary>
+          <p>Atendemos os dois cenários — de retrofits pontuais em escritórios e residências a fachadas e guarda-corpos de grande porte em obras corporativas.</p>
+        </details>
+        <details>
+          <summary>Existe garantia normativa sobre os serviços executados?</summary>
+          <p>Sim. A execução segue rigorosamente as NBRs aplicáveis a vidros de segurança, guarda-corpos e sistemas de fixação, com laudos técnicos e ART de execução disponibilizados ao escritório responsável.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <div class="footer__brand">ESTRUTURA°</div>
+      <p style="margin:12px 0 0; max-width:34ch; color:#89a3ac; line-height:1.6;">Engenharia especializada em sistemas de vidros, divisórias modulares e forros técnicos para obras assinadas por arquitetura e engenharia.</p>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>Navegação</h4>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Enviar Projeto</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contato Técnico</h4>
+        <a href="tel:+553133330000">(31) 3333-0000</a>
+        <a href="https://wa.me/5531999999999" target="_blank" rel="noopener">(31) 99999-9999 (WhatsApp)</a>
+        <a href="mailto:projetos@estrutura.com.br">projetos@estrutura.com.br</a>
+      </div>
+      <div class="footer__col">
+        <h4>Localização</h4>
+        <p>Av. Raja Gabáglia, 2000</p>
+        <p>Estoril — Belo Horizonte / MG</p>
+        <p>CEP 30494-170</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>ESTRUTURA° © 2026 — Todos os direitos reservados</span>
+    <span>FL 06/06 · REV B · ENGENHARIA DE ESQUADRIAS E VIDROS TÉCNICOS</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5531999999999?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20engenharia%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Enviar projeto via WhatsApp">
+  <svg class="wa-float__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C22 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.11.1-1.79-.11-.41-.13-.94-.3-1.62-.6-2.86-1.24-4.73-4.12-4.87-4.31-.14-.19-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.28.71 1.17 1.53 1.89 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.45.2.51.32.07.12.07.68-.17 1.36Z"/></svg>
+  <span class="wa-float__label">Falar com Engenharia</span>
+</a>
+
+<script>
+  document.getElementById('contato-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Obrigado! Seu projeto e informações foram encaminhados para nossa equipe de engenharia. Retornaremos em até 48 horas úteis.');
+  });
+</script>
+
+</body>
+</html>
